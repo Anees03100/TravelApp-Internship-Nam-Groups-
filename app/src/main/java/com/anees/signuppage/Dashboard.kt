@@ -48,6 +48,7 @@ fun Dashboard(navController: NavHostController) {
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
+                modifier = Modifier.clip(shape = RoundedCornerShape(bottomEnd = 20.dp, bottomStart = 20.dp)),
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color(0xffFF7787),
                     scrolledContainerColor = Color.Unspecified,
