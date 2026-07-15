@@ -12,10 +12,22 @@ fun Nav() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = "main_screen",
+        startDestination = "dashboard_screen",
     ) {
+        composable (route = "dashboard_screen"){
+        Dashboard(navController = navController)
+        }
         composable(route = "main_screen") {
             Main(navController = navController)
+        }
+        composable(route = "login_screen"){
+            LoginScreen(navController = navController)
+        }
+        composable(route = "mainn_screen"){
+            MainScreen(navController = navController)
+        }
+        composable (route = "calculator_page"){
+            Calculator(navController = navController)
         }
 
         composable(
@@ -31,7 +43,9 @@ fun Nav() {
             val userEmail = backStackEntry.arguments?.getString("email") ?: "No Email"
             val userGender = backStackEntry.arguments?.getString("gender") ?: "Not Specified"
             val userHobbies = backStackEntry.arguments?.getString("hobbies") ?: "None"
-            ScreenA(name = userName, email = userEmail, gender = userGender, hobbies = userHobbies)
+            ScreenA(
+                name = userName, email = userEmail, gender = userGender, hobbies = userHobbies,navController = navController
+            )
         }
     }
 }
