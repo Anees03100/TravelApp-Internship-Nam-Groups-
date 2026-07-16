@@ -68,94 +68,102 @@ fun Dashboard(navController: NavHostController) {
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            Column(modifier = Modifier.padding(25.dp)) {
-                var text by remember { mutableStateOf("") }
-                var selectedTag by remember { mutableStateOf("Most Viewed") }
+            Column() {
+                Column(modifier = Modifier.padding(20.dp)) {
+                    var text by remember { mutableStateOf("") }
 
-                Text(text = "Hi, Anees", fontSize = 25.sp, fontWeight = FontWeight.Bold, color = Color.Black)
-                Text(text = "Explore the World", fontSize = 19.sp, fontWeight = FontWeight.Medium, color = Color.Gray)
-                Spacer(modifier = Modifier.height(10.dp))
-                OutlinedTextField(
-                    value = text,
-                    onValueChange = {text = it},
-                    placeholder = { Text("Search Places") },
+                    Text(text = "Hi, Anees", fontSize = 25.sp, fontWeight = FontWeight.Bold, color = Color.Black)
+                    Text(text = "Explore the World", fontSize = 19.sp, fontWeight = FontWeight.Medium, color = Color.Gray)
+                    Spacer(modifier = Modifier.height(10.dp))
+                    OutlinedTextField(
+                        value = text,
+                        onValueChange = {text = it},
+                        placeholder = { Text("Search Places") },
 
-                    shape = RoundedCornerShape(12.dp),
-                    modifier = Modifier.width(374.dp),
-                    trailingIcon = {
-                        Icon(
-                            imageVector = Icons.Default.Search,
-                            contentDescription = "Search Icon"
+                        shape = RoundedCornerShape(12.dp),
+                        modifier = Modifier.width(374.dp),
+                        trailingIcon = {
+                            Icon(
+                                imageVector = Icons.Default.Search,
+                                contentDescription = "Search Icon"
+                            )
+                        },
+                        colors = OutlinedTextFieldDefaults.colors(
+
+                            focusedBorderColor = Color(0xFFFF7686),
+                            unfocusedContainerColor = Color.Transparent,
+                            focusedContainerColor = Color.Transparent,
+                            disabledContainerColor = Color.Transparent,
+
+                            focusedLabelColor = Color(0xFFFF7686),
+                            focusedTrailingIconColor = Color(0xffFF7686),
                         )
-                    },
-                    colors = OutlinedTextFieldDefaults.colors(
-
-                        focusedBorderColor = Color(0xFFFF7686),
-                        unfocusedContainerColor = Color.Transparent,
-                        focusedContainerColor = Color.Transparent,
-                        disabledContainerColor = Color.Transparent,
-
-                        focusedLabelColor = Color(0xFFFF7686),
-                        focusedTrailingIconColor = Color(0xffFF7686),
                     )
-                )
-                Spacer(modifier = Modifier.height(15.dp))
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text(text= "Popular Places", color = Color.Black, fontWeight = FontWeight.SemiBold, fontSize = 20.sp)
-                    Text(text = "View all", color = Color.Gray, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
-                }
-                Spacer(modifier = Modifier.height(15.dp))
-                Row(modifier = Modifier.horizontalScroll(rememberScrollState())) {
-                    tags(
-                        title = "Most Viewed",
-                        isSelected = selectedTag == "Most Viewed",
-                        onClick = { selectedTag = "Most Viewed" }
-                    )
-                    Spacer(modifier = Modifier.width(7.dp))
-                    tags(
-                        title = "Nearby",
-                        isSelected = selectedTag == "Nearby",
-                        onClick = { selectedTag = "Nearby" }
-                    )
-                    Spacer(modifier = Modifier.width(7.dp))
-                    tags(
-                        title = "Latest",
-                        isSelected = selectedTag == "Latest",
-                        onClick = { selectedTag = "Latest" }
-                    )
-                    Spacer(modifier = Modifier.width(7.dp))
-                    tags(
-                        title = "Beautiful",
-                        isSelected = selectedTag == "Beautiful",
-                        onClick = { selectedTag = "Beautiful" }
-                    )
-                    Spacer(modifier = Modifier.width(7.dp))
-                }
-                Spacer(modifier = Modifier.height(40.dp))
-                Row(modifier = Modifier.horizontalScroll(rememberScrollState())) {
-                    CustomCard("Calculator",
-                        imageRes = R.drawable.banner1,
-                        onClick = {
-                        navController.navigate("calculator_page")
-                    } )
-                    Spacer(modifier = Modifier.width(15.dp))
-                    CustomCard("Form Page",
-                        imageRes = R.drawable.banner2,
-                        onClick = {
-                        navController.navigate("main_screen")
-                    } )
-                    Spacer(modifier = Modifier.width(15.dp))
-                    CustomCard("Expenses",
-                        imageRes = R.drawable.banner3,
-                        onClick = {
-                            navController.navigate("mainn_screen")
-                        } )
-
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Text(text= "Popular Places", color = Color.Black, fontWeight = FontWeight.SemiBold, fontSize = 20.sp)
+                        Text(text = "View all", modifier = Modifier.clickable(onClick = {}),color = Color.Gray, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
+                    }
 
                 }
+                Column() {
+                    var selectedTag by remember { mutableStateOf("Most Viewed") }
+
+                    Row(modifier = Modifier.horizontalScroll(rememberScrollState())) {
+                        Spacer(modifier = Modifier.width(20.dp))
+                        tags(
+                            title = "Most Viewed",
+                            isSelected = selectedTag == "Most Viewed",
+                            onClick = { selectedTag = "Most Viewed" }
+                        )
+                        Spacer(modifier = Modifier.width(7.dp))
+                        tags(
+                            title = "Nearby",
+                            isSelected = selectedTag == "Nearby",
+                            onClick = { selectedTag = "Nearby" }
+                        )
+                        Spacer(modifier = Modifier.width(7.dp))
+                        tags(
+                            title = "Latest",
+                            isSelected = selectedTag == "Latest",
+                            onClick = { selectedTag = "Latest" }
+                        )
+                        Spacer(modifier = Modifier.width(7.dp))
+                        tags(
+                            title = "Beautiful",
+                            isSelected = selectedTag == "Beautiful",
+                            onClick = { selectedTag = "Beautiful" }
+                        )
+                        Spacer(modifier = Modifier.width(20.dp))
+                    }
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Row(modifier = Modifier.horizontalScroll(rememberScrollState())) {
+                        Spacer(modifier = Modifier.width(25.dp))
+                        CustomCard("Calculator",
+                            imageRes = R.drawable.banner1,
+                            onClick = {
+                                navController.navigate("calculator_page")
+                            } )
+                        Spacer(modifier = Modifier.width(15.dp))
+                        CustomCard("Form Page",
+                            imageRes = R.drawable.banner2,
+                            onClick = {
+                                navController.navigate("main_screen")
+                            } )
+                        Spacer(modifier = Modifier.width(15.dp))
+                        CustomCard("Expenses",
+                            imageRes = R.drawable.banner3,
+                            onClick = {
+                                navController.navigate("mainn_screen")
+                            }
+                        )
+                        Spacer(modifier = Modifier.width(20.dp))
+                    }
+                }
+
             }
         }
     }
