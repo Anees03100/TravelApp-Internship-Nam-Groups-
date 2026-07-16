@@ -141,7 +141,7 @@ fun Dashboard(navController: NavHostController) {
                     }
                     Spacer(modifier = Modifier.height(10.dp))
                     Row(modifier = Modifier.horizontalScroll(rememberScrollState())) {
-                        Spacer(modifier = Modifier.width(25.dp))
+                        Spacer(modifier = Modifier.width(20.dp))
                         CustomCard("Calculator",
                             imageRes = R.drawable.banner1,
                             onClick = {
