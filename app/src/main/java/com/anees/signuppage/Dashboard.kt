@@ -139,7 +139,7 @@ fun Dashboard(navController: NavHostController) {
                         )
                         Spacer(modifier = Modifier.width(20.dp))
                     }
-                    Spacer(modifier = Modifier.height(10.dp))
+                    Spacer(modifier = Modifier.height(30.dp))
                     Row(modifier = Modifier.horizontalScroll(rememberScrollState())) {
                         Spacer(modifier = Modifier.width(20.dp))
                         CustomCard("Calculator",

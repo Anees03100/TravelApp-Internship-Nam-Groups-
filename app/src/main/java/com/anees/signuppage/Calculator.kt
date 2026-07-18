@@ -42,14 +42,14 @@ fun Calculator(navController: NavHostController) {
     var secondNumber by remember { mutableStateOf("") }
 
 
-    val handleOperator: (String) -> Unit = {op ->
-        if(firstNumber.isNotEmpty()){
-            if(operator.isEmpty()){
+    val handleOperator: (String) -> Unit = { op ->
+        if (firstNumber.isNotEmpty()) {
+            if (operator.isEmpty()) {
                 operator = op
                 expression += op
-            }else if (secondNumber.isEmpty()){
+            } else if (secondNumber.isEmpty()) {
                 operator = op
-                expression = expression.dropLast(1)+ op
+                expression = expression.dropLast(1) + op
             }
         }
     }
@@ -68,7 +68,10 @@ fun Calculator(navController: NavHostController) {
                 .padding(10.dp)
                 .verticalScroll(rememberScrollState())
         ) {
-            Column(modifier = Modifier.weight(2F).padding(vertical = 10.dp).align(Alignment.End)) {
+            Column(modifier = Modifier
+                .weight(2F)
+                .padding(vertical = 10.dp)
+                .align(Alignment.End)) {
                 Spacer(modifier = Modifier.height(30.dp))
                 Text(text = expression, color = Color.Black, fontSize = 40.sp, maxLines = 3)
                 Spacer(modifier = Modifier.height(8.dp))
@@ -76,41 +79,95 @@ fun Calculator(navController: NavHostController) {
             }
             Column {
                 Row {
-                    CalculatorButtons(isFunction = true, text = "AC", modifier = Modifier.weight(2F), onClick = {
-                        expression = ""
-                        result = ""
-                        firstNumber = ""
-                        operator = ""
-                        secondNumber = ""
-                    })
-                    CalculatorButtons(isFunction = true, text = "⌫", modifier = Modifier.weight(1F), onClick = {
-                        if (expression.isNotEmpty()) expression = expression.dropLast(1)
-                        firstNumber = ""; operator = ""; secondNumber = ""
-                    })
-                    CalculatorButtons(isFunction = true, text = "/", modifier = Modifier.weight(1F), onClick = {
-                        handleOperator(it)
-                    })
+                    CalculatorButtons(
+                        isFunction = true,
+                        text = "AC",
+                        modifier = Modifier.weight(2F),
+                        onClick = {
+                            expression = ""
+                            result = ""
+                            firstNumber = ""
+                            operator = ""
+                            secondNumber = ""
+                        })
+                    CalculatorButtons(
+                        isFunction = true,
+                        text = "⌫",
+                        modifier = Modifier.weight(1F),
+                        onClick = {
+                            if (expression.isNotEmpty()) expression = expression.dropLast(1)
+                            firstNumber = ""; operator = ""; secondNumber = ""
+                        })
+                    CalculatorButtons(
+                        isFunction = true,
+                        text = "/",
+                        modifier = Modifier.weight(1F),
+                        onClick = {
+                            handleOperator(it)
+                        })
                 }
                 Row {
-                    CalculatorButtons(text = "7", modifier = Modifier.weight(1F), onClick = { expression += it; if(operator.isEmpty()) firstNumber += it else secondNumber += it })
-                    CalculatorButtons(text = "8", modifier = Modifier.weight(1F), onClick = { expression += it; if(operator.isEmpty()) firstNumber += it else secondNumber += it })
-                    CalculatorButtons(text = "9", modifier = Modifier.weight(1F), onClick = { expression += it; if(operator.isEmpty()) firstNumber += it else secondNumber += it })
-                    CalculatorButtons(isFunction = true, text = "*", modifier = Modifier.weight(1F), onClick = { handleOperator(it)})
+                    CalculatorButtons(
+                        text = "7",
+                        modifier = Modifier.weight(1F),
+                        onClick = { expression += it; if (operator.isEmpty()) firstNumber += it else secondNumber += it })
+                    CalculatorButtons(
+                        text = "8",
+                        modifier = Modifier.weight(1F),
+                        onClick = { expression += it; if (operator.isEmpty()) firstNumber += it else secondNumber += it })
+                    CalculatorButtons(
+                        text = "9",
+                        modifier = Modifier.weight(1F),
+                        onClick = { expression += it; if (operator.isEmpty()) firstNumber += it else secondNumber += it })
+                    CalculatorButtons(
+                        isFunction = true,
+                        text = "*",
+                        modifier = Modifier.weight(1F),
+                        onClick = { handleOperator(it) })
                 }
                 Row {
-                    CalculatorButtons(text = "4", modifier = Modifier.weight(1F), onClick = { expression += it; if(operator.isEmpty()) firstNumber += it else secondNumber += it })
-                    CalculatorButtons(text = "5", modifier = Modifier.weight(1F), onClick = { expression += it; if(operator.isEmpty()) firstNumber += it else secondNumber += it })
-                    CalculatorButtons(text = "6", modifier = Modifier.weight(1F), onClick = { expression += it; if(operator.isEmpty()) firstNumber += it else secondNumber += it })
-                    CalculatorButtons(isFunction = true, text = "+", modifier = Modifier.weight(1F), onClick ={ handleOperator(it) })
+                    CalculatorButtons(
+                        text = "4",
+                        modifier = Modifier.weight(1F),
+                        onClick = { expression += it; if (operator.isEmpty()) firstNumber += it else secondNumber += it })
+                    CalculatorButtons(
+                        text = "5",
+                        modifier = Modifier.weight(1F),
+                        onClick = { expression += it; if (operator.isEmpty()) firstNumber += it else secondNumber += it })
+                    CalculatorButtons(
+                        text = "6",
+                        modifier = Modifier.weight(1F),
+                        onClick = { expression += it; if (operator.isEmpty()) firstNumber += it else secondNumber += it })
+                    CalculatorButtons(
+                        isFunction = true,
+                        text = "+",
+                        modifier = Modifier.weight(1F),
+                        onClick = { handleOperator(it) })
                 }
                 Row {
-                    CalculatorButtons(text = "1", modifier = Modifier.weight(1F), onClick = { expression += it; if(operator.isEmpty()) firstNumber += it else secondNumber += it })
-                    CalculatorButtons(text = "2", modifier = Modifier.weight(1F), onClick = { expression += it; if(operator.isEmpty()) firstNumber += it else secondNumber += it })
-                    CalculatorButtons(text = "3", modifier = Modifier.weight(1F), onClick = { expression += it; if(operator.isEmpty()) firstNumber += it else secondNumber += it })
-                    CalculatorButtons(isFunction = true, text = "-", modifier = Modifier.weight(1F), onClick = { handleOperator(it) })
+                    CalculatorButtons(
+                        text = "1",
+                        modifier = Modifier.weight(1F),
+                        onClick = { expression += it; if (operator.isEmpty()) firstNumber += it else secondNumber += it })
+                    CalculatorButtons(
+                        text = "2",
+                        modifier = Modifier.weight(1F),
+                        onClick = { expression += it; if (operator.isEmpty()) firstNumber += it else secondNumber += it })
+                    CalculatorButtons(
+                        text = "3",
+                        modifier = Modifier.weight(1F),
+                        onClick = { expression += it; if (operator.isEmpty()) firstNumber += it else secondNumber += it })
+                    CalculatorButtons(
+                        isFunction = true,
+                        text = "-",
+                        modifier = Modifier.weight(1F),
+                        onClick = { handleOperator(it) })
                 }
                 Row {
-                    CalculatorButtons(text = "0", modifier = Modifier.weight(2F), onClick = { expression += it; if(operator.isEmpty()) firstNumber += it else secondNumber += it })
+                    CalculatorButtons(
+                        text = "0",
+                        modifier = Modifier.weight(2F),
+                        onClick = { expression += it; if (operator.isEmpty()) firstNumber += it else secondNumber += it })
                     CalculatorButtons(text = ".", modifier = Modifier.weight(1F), onClick = {
                         if (operator.isEmpty()) {
                             if (!firstNumber.contains(".")) {
@@ -125,40 +182,48 @@ fun Calculator(navController: NavHostController) {
                         }
                     })
 
-                    CalculatorButtons(isFunction = true, text = "=", modifier = Modifier.weight(1F), onClick = {
-                        val num1 = firstNumber.toDoubleOrNull() ?: 0.0
-                        val num2 = secondNumber.toDoubleOrNull() ?: 0.0
+                    CalculatorButtons(
+                        isFunction = true,
+                        text = "=",
+                        modifier = Modifier.weight(1F),
+                        onClick = {
+                            val num1 = firstNumber.toDoubleOrNull() ?: 0.0
+                            val num2 = secondNumber.toDoubleOrNull() ?: 0.0
 
-                        val calculation = when (operator) {
-                            "+" -> num1 + num2
-                            "-" -> num1 - num2
-                            "*" -> num1 * num2
-                            "/" -> if (num2 != 0.0) num1 / num2 else "infinity"
-                            else -> 0.0
-                        }
-                        result = calculation.toString()
-                    })
+                            val calculation = when (operator) {
+                                "+" -> num1 + num2
+                                "-" -> num1 - num2
+                                "*" -> num1 * num2
+                                "/" -> if (num2 != 0.0) num1 / num2 else "infinity"
+                                else -> 0.0
+                            }
+                            result = calculation.toString()
+                        })
                 }
                 Spacer(modifier = Modifier.height(25.dp))
             }
         }
     }
 }
+
 @Composable
 fun CalculatorButtons(
     modifier: Modifier = Modifier,
     text: String = "",
     isFunction: Boolean = false,
     onClick: (String) -> Unit = {}
-){
+) {
     Button(
-        modifier = modifier.clip(RoundedCornerShape(32.dp)).padding(4.dp).height(80.dp),
+        modifier = modifier
+            .clip(RoundedCornerShape(32.dp))
+            .padding(4.dp)
+            .height(80.dp),
         onClick = { onClick(text) },
         colors = ButtonDefaults.buttonColors(
-            containerColor = if(isFunction) Color(0xFFE86877) else Color.LightGray
+            containerColor = if (isFunction) Color(0xFFE86877) else Color.LightGray
         )
     ) {
-        Text(text = text, color = if(isFunction) Color.White else Color.Black, fontSize = 26.sp)
+        Text(text = text, color = if (isFunction) Color.White else Color.Black, fontSize = 26.sp)
     }
 }
 
